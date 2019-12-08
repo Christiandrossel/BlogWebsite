@@ -1,0 +1,58 @@
+body {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.line1 {
+    height: 3px;
+    width:100%;
+    display:block;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: green;
+}
+
+.ml-1 {
+  margin-left: 0.25 !important;
+}
+
+.nowrap{
+    display: inline;
+    overflow:hidden;
+}
+.card-header {
+    background-color: green;
+    color: white;
+}
+.color-green{
+    background-color: #bd9616;
+}
+.comment {
+  background-color: #0b7e24;
+}
+
+h2, h3{
+    color:#118d41;
+}
+
+table{
+    color: #0b7e24;
+    border-color: #0b7e24 !important;
+}
+
+.table-borderless td, th {
+    border: 0 !important;
+} 
+
+.btn{
+    color: white;
+    background-color: #0b7e24;
+}
+
+a{
+    color: #0b7e24;
+}
+
+#com {
+    margin-top: 7px;
+}
