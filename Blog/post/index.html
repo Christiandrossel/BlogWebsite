@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Ajax Beispiel 001</title>
+  <script type="text/javascript">
+
+	var request = false;
+
+	// Request senden
+	function setRequest() {
+		// Request erzeugen
+		if (window.XMLHttpRequest) {
+			request = new XMLHttpRequest(); // Mozilla, Safari, Opera
+		} else if (window.ActiveXObject) {
+			try {
+				request = new ActiveXObject('Msxml2.XMLHTTP'); // IE 5
+			} catch (e) {
+				try {
+					request = new ActiveXObject('Microsoft.XMLHTTP'); // IE 6
+				} catch (e) {}
+			}
+		}
+
+		// überprüfen, ob Request erzeugt wurde
+		if (!request) {
+			alert("Kann keine XMLHTTP-Instanz erzeugen");
+			return false;
+		} else {
+			var url = "ajax_001.php";
+			// Request öffnen
+			request.open('post', url, true);
+			// Request senden
+			request.send(null);
+			// Request auswerten
+			request.onreadystatechange = interpretRequest;
+		}
+	}
+
+	// Request auswerten
+	function interpretRequest() {
+		switch (request.readyState) {
+			// wenn der readyState 4 und der request.status 200 ist, dann ist alles korrekt gelaufen
+			case 4:
+				if (request.status != 200) {
+					alert("Der Request wurde abgeschlossen, ist aber nicht OK\nFehler:"+request.status);
+				} else {
+					var content = request.responseText;
+					// den Inhalt des Requests in das <div> schreiben
+					document.getElementById('content').innerHTML = content;
+				}
+				break;
+			default:
+				break;
+		}
+    }
+    function getValue (textarea) {
+    // Angegebenes Element vom Typ texarea?
+    if (textarea.type == 'textarea') {
+      // Inhalt des Eingabefeldes
+      var value = document.formular.feld.value;
+      // Eingabefeld leer?
+      if (value.length == 0)
+        // Wenn ja, entsprechende Meldung ausgeben
+        alert ('Textfeld ist leer!');
+      else
+        // Ausgabe des in der Textarea gespeicherten Inhalts
+        //alert ('Inhalt des Feldes: ' + value);
+        // Ausgabe des in der Textarea gespeicherten Inhalts an der stelle des <div>
+        document.getElementById('content').innerHTML = value;
+        
+    }
+  }
+  </script>
+ </head>
+ <body>
+        <form name="formular">
+                <textarea name="feld"></textarea><br>
+				<input type="button" onclick="getValue (document.formular.feld)" value="Inhalt auslesen" />
+				<br><br><br>
+  <div id="content"></div>
+ </body>
+</html>

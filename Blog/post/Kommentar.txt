@@ -1,0 +1,21 @@
+Text aus der Text Datei
+
+
+
+
+text aus der teaxtarea in eine var laden
+    var message = $("textarea").val();
+
+
+text in der html ausgeben
+    document.getElementById("div1").innerHTML=message;
+
+
+
+text in eine txt oder xml datei speichern
+
+
+
+
+text zukünftig aus der txt oder xml laden
+
